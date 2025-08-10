@@ -1,0 +1,85 @@
+
+    /* ------------------
+       CONFIGURÁVEL: cores, fontes e ícones no topo
+       ------------------ */
+    :root{
+      --bg:#fff6fb;
+      --card:#fff;
+      --accent:#ff6b9a; /* cor dos botões e heart */
+      --muted:#b98ea5;
+      --glass: rgba(255,255,255,0.6);
+      --shadow: 0 8px 30px rgba(150,40,90,0.12);
+      --radius:18px;
+      --font-sans: 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--font-sans);
+      background:linear-gradient(180deg,var(--bg) 0%, #fff0f6 100%);
+      display:flex;align-items:center;justify-content:center;padding:28px;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      color:#3a2430;
+    }
+
+    .container{
+      width:100%;max-width:980px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.95), var(--card));
+      border-radius:24px;padding:28px;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr 360px;gap:22px;
+    }
+
+    /* left - game area */
+    .game-area{display:flex;flex-direction:column;align-items:center;gap:18px;padding:10px}
+    .title{font-size:20px;font-weight:700;color:#4b2231}
+    .subtitle{font-size:13px;color:var(--muted)}
+
+    .machine{
+      width:100%;max-width:640px;background:linear-gradient(180deg,#fff, #fff0f4);
+      border-radius:16px;padding:18px;border:1px solid rgba(200,120,150,0.08);
+      display:flex;align-items:center;justify-content:center;gap:12px;position:relative
+    }
+
+    /* Reels */
+    .reels{display:flex;gap:12px}
+    .reel{background:var(--glass);backdrop-filter:blur(6px);border-radius:12px;padding:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;width:120px;height:140px;overflow:hidden;border:1px solid rgba(180,110,140,0.08)}
+
+    .symbol{width:72px;height:72px;display:flex;align-items:center;justify-content:center;font-size:34px;transition:transform .25s ease}
+
+    /* spinning visual — while spinning we'll rapidly change the symbol and add a slight translateY */
+    .spinning .symbol{transform:translateY(-6px) scale(0.98)}
+
+    /* Right panel - controls */
+    .controls{display:flex;flex-direction:column;gap:14px;padding:18px}
+    .attempts{font-size:14px;color:#5b2a3a}
+    .spin-btn{
+      background:linear-gradient(180deg,var(--accent),#ff3f78);border:none;color:white;padding:14px 18px;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 8px 20px rgba(255,90,140,0.16);
+    }
+    .spin-btn[disabled]{opacity:.5;cursor:not-allowed}
+
+    .hint{font-size:13px;color:var(--muted)}
+
+    footer.note{font-size:12px;color:#7a4b5b}
+
+    /* Modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.45);display:flex;align-items:center;justify-content:center;z-index:100;}
+    .modal{background:linear-gradient(180deg,#fff,#fff9fb);padding:22px;border-radius:16px;max-width:520px;width:92%;box-shadow:0 18px 40px rgba(80,20,60,0.24)}
+    .modal h2{margin:0 0 8px 0;color:#4a2130}
+    .modal p{margin:0 0 16px 0;color:#5d2f3b}
+    .modal .close{background:transparent;border:none;color:var(--accent);font-weight:700;cursor:pointer}
+
+    /* Responsive */
+    @media (max-width:880px){
+      .container{grid-template-columns:1fr;max-width:420px}
+      .machine{max-width:100%}
+      .reel{width:90px;height:120px}
+      .symbol{width:58px;height:58px;font-size:28px}
+    }
+
+    /* little confetti heart animation (used after win) */
+    .confetti{pointer-events:none;position:absolute;left:0;right:0;top:0;bottom:0;overflow:hidden}
+    .confetti .c{position:absolute;animation:float 2200ms linear forwards}
+    .confetti .c svg{width:18px;height:18px}
+    @keyframes float{0%{transform:translateY(-20px) rotate(0) scale(.9);opacity:1}100%{transform:translateY(420px) rotate(360deg) scale(1);opacity:0}}

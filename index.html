@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Presente — Slot Machine Romântica</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container" role="main">
+    <div class="game-area">
+      <div class="title">Gire a sua sorte</div>
+      <div class="subtitle">Três tentativas — seu presente espera na 3ª rodada ❤️</div>
+
+      <div class="machine" aria-live="polite">
+        <div class="reels" id="reels">
+          <div class="reel" id="reel-1"><div class="symbol" data-pos="0" id="s1">🌸</div></div>
+          <div class="reel" id="reel-2"><div class="symbol" data-pos="0" id="s2">💫</div></div>
+          <div class="reel" id="reel-3"><div class="symbol" data-pos="0" id="s3">💖</div></div>
+        </div>
+        <div class="confetti" id="confetti" aria-hidden="true"></div>
+      </div>
+
+      <div style="max-width:640px;text-align:center;padding:6px 12px;color:#612f3c;font-size:13px">
+        Cada giro tem uma animação suave — os dois primeiros são surpresas, mas o terceiro é especial.
+      </div>
+
+    </div>
+
+    <aside class="controls" aria-label="Controles do jogo">
+      <div class="attempts">Tentativas: <strong id="attempts">0</strong>/3</div>
+      <button class="spin-btn" id="spinBtn" aria-pressed="false">Girar</button>
+      <div class="hint">Dica: personalize a declaração dentro do código para torná‑la íntima e única.</div>
+      <div class="note" style="margin-top:auto">
+        <footer class="note">Design responsivo — funciona em celulares e computadores.</footer>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Modal de premiação -->
+  <div id="winModal" class="modal-backdrop" style="display:none" role="dialog" aria-modal="true">
+    <div class="modal">
+      <h2>Você ganhou!</h2>
+      <p id="prizeText">Parabéns — esta é a sua declaração personalizada.</p>
+      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px">
+        <button class="close" id="closeModal">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+ 
+<script src="script.js"></script>
+
+</body>
+</html>
